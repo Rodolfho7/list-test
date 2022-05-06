@@ -24,4 +24,7 @@ export class PostagensComponent implements OnInit {
     );
   }
 
+  addPost(): void {
+    console.log('add post clicked');
+  }
 }

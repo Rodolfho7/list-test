@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { TodosComponent } from './todos.component';
 import { TodosRoutingModule } from './todos-routing.module';
 import { LoadingModule } from '@components/loading/loading.module';
-import { MatCheckboxModule } from '@angular/material/checkbox'; 
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AddButtonModule } from '@components/add-button/add-button.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CommonModule,
     TodosRoutingModule,
     LoadingModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AddButtonModule
   ]
 })
 export class TodosModule { }

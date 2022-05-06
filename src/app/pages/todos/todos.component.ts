@@ -19,4 +19,7 @@ export class TodosComponent implements OnInit {
     this.todos$ = this.todosService.getAll();
   }
 
+  addTodo(): void {
+    console.log('add todo clicked');
+  }
 }

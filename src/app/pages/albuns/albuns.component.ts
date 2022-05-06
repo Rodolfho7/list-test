@@ -24,4 +24,8 @@ export class AlbunsComponent implements OnInit {
     )
   }
 
+  addAlbum(): void {
+    console.log('add album clicked');
+  }
+
 }
