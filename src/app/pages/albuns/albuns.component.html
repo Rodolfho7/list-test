@@ -1,1 +1,15 @@
-<h1>Albuns</h1>
+<h1 class="page-title">Albuns</h1>
+
+<ng-container *ngIf="albums$ | async as albums; else loading">
+  <div *ngFor="let album of albums" class="album">
+    <h2>{{ album.title }}</h2>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="(albumError$ | async)">
+  <p>Houve um erro ao carregar os dados</p>
+</ng-container>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

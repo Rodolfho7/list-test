@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlbunsComponent } from './albuns.component';
 import { AlbunsRoutingModule } from './albuns-routing.module';
+import { LoadingModule } from '@components/loading/loading.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import { AlbunsRoutingModule } from './albuns-routing.module';
   ],
   imports: [
     CommonModule,
-    AlbunsRoutingModule
+    AlbunsRoutingModule,
+    LoadingModule
   ]
 })
 export class AlbunsModule { }

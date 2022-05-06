@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Album } from '@models/album.model';
+import { AlbunsService } from '@services/api/albuns.service';
+import { catchError, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-albuns',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlbunsComponent implements OnInit {
 
-  constructor() { }
+  albums$: Observable<Album[]> = of([]);
+  albumError$: Observable<boolean> = of(false);
+
+  constructor(private albumService: AlbunsService) { }
 
   ngOnInit(): void {
+    this.albums$ = this.albumService.getAll().pipe(
+      catchError(() => {
+        this.albumError$ = of(true);
+        return of([]);
+      })
+    )
   }
 
 }
