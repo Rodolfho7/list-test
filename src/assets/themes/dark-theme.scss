@@ -38,7 +38,16 @@ $dark-theme: mat.define-dark-theme((
 ));
 
 .dark {
-  @include mat.core-theme($dark-theme);
-  @include mat.button-theme($dark-theme);
+  @include mat.core-color($dark-theme);
+  @include mat.button-color($dark-theme);
+  @include mat.input-color($dark-theme);
+  @include mat.form-field-color($dark-theme);
+  @include mat.toolbar-color($dark-theme);
+  
   background-color: $background-dark;
+
+  //text color do not change with dark/light toggle
+  input, textarea {
+    color: #FFF;
+  }
 }

@@ -1,0 +1,19 @@
+import { Component } from '@angular/core';
+import { ThemeService } from '../../services/theme.service';
+
+@Component({
+  selector: 'app-toolbar',
+  templateUrl: './toolbar.component.html',
+  styleUrls: ['./toolbar.component.scss']
+})
+export class ToolbarComponent {
+
+  darkChecked = false;
+
+  constructor(private themeService: ThemeService) {}
+
+  toggleTheme(): void {
+    this.darkChecked = !this.darkChecked;
+    this.themeService.toggleTheme(this.darkChecked);
+  }
+}
