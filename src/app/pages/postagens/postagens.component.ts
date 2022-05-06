@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PostModel } from '@models/post.model';
+import { PostagensService } from '@services/api/postagens.service';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-postagens',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostagensComponent implements OnInit {
 
-  constructor() { }
+  posts$: Observable<PostModel[]> = of([]);
+
+  constructor(private postService: PostagensService) { }
 
   ngOnInit(): void {
+    this.posts$ = this.postService.getAll();
   }
 
 }

@@ -3,3 +3,13 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+:root {
+  --shadow-color: rgba(126, 34, 206, 0.25);
+  --border-color: rgb(126, 34, 206);
+}
+
+.dark:root {
+  --shadow-color: rgba(21, 128, 61, 0.25);
+  --border-color: rgb(21, 128, 61);
+}
