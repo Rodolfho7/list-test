@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-loading',
@@ -6,8 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./loading.component.scss']
 })
 export class LoadingComponent {
-
-  @Input() loading: boolean = false;
 
   constructor() { }
 
