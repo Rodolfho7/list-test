@@ -1,5 +1,9 @@
 <h1 class="page-title">Postagens</h1>
 
+<app-loading
+  [loading]="(posts$ | async)?.length == 0"
+></app-loading>
+
 <div *ngFor="let post of posts$ | async" class="post">
   <h2>{{ post.title }}</h2>
   <p class="post-body">{{ post.body }}</p>
