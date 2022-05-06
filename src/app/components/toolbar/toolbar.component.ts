@@ -10,7 +10,9 @@ export class ToolbarComponent {
 
   darkChecked = false;
 
-  constructor(private themeService: ThemeService) {}
+  constructor(private themeService: ThemeService) {
+    this.darkChecked = this.themeService.readStatus();
+  }
 
   toggleTheme(): void {
     this.darkChecked = !this.darkChecked;

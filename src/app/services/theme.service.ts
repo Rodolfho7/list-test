@@ -16,4 +16,16 @@ export class ThemeService {
     this.storageService.setItem('list-test-theme', themeDark ? 'dark' : '');
     this.htmlReference?.classList.toggle('dark');
   }
+
+  readStatus(): boolean {
+    const darkStatus = this.storageService.getItem('list-test-theme');
+    if (darkStatus) {
+      this.setDarkMode();
+    }
+    return darkStatus ? true : false;
+  }
+
+  setDarkMode(): void {
+    this.htmlReference?.classList.add('dark');
+  }
 }
