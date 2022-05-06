@@ -1,0 +1,44 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+@import './colors/colors-dark.scss';
+
+$project-palette: (
+  50: $dark-50,
+  100: $dark-100,
+  200: $dark-200,
+  300: $dark-300,
+  400: $dark-400,
+  500: $dark-500,
+  600: $dark-600,
+  700: $dark-700,
+  800: $dark-800,
+  900: $dark-900,
+  contrast: (
+    50: $contrast-dark-50,
+    100: $contrast-dark-100,
+    200: $contrast-dark-200,
+    300: $contrast-dark-300,
+    400: $contrast-dark-400,
+    500: $contrast-dark-500,
+    600: $contrast-dark-600,
+    700: $contrast-dark-700,
+    800: $contrast-dark-800,
+    900: $contrast-dark-900,
+  )
+);
+
+$dark-primary: mat.define-palette($project-palette, 700);
+$dark-accent: mat.define-palette($project-palette, 400);
+$dark-theme: mat.define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+  )
+));
+
+.dark {
+  @include mat.core-theme($dark-theme);
+  @include mat.button-theme($dark-theme);
+  background-color: $background-dark;
+}
