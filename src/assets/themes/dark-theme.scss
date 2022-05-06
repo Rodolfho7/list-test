@@ -47,7 +47,7 @@ $dark-theme: mat.define-dark-theme((
   background-color: $background-dark;
 
   //text color do not change with dark/light toggle
-  input, textarea {
+  * {
     color: #FFF;
   }
 }
