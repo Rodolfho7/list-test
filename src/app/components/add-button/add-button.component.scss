@@ -1,0 +1,15 @@
+.content {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+
+  button {
+    padding: 0.75rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    box-shadow: var(--shadow-color) 0px 5px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
