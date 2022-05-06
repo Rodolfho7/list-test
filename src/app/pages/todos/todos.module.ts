@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodosComponent } from './todos.component';
 import { TodosRoutingModule } from './todos-routing.module';
+import { LoadingModule } from '@components/loading/loading.module';
+import { MatCheckboxModule } from '@angular/material/checkbox'; 
 
 @NgModule({
   declarations: [
@@ -9,7 +11,9 @@ import { TodosRoutingModule } from './todos-routing.module';
   ],
   imports: [
     CommonModule,
-    TodosRoutingModule
+    TodosRoutingModule,
+    LoadingModule,
+    MatCheckboxModule
   ]
 })
 export class TodosModule { }

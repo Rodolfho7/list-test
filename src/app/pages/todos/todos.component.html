@@ -1,1 +1,17 @@
-<h1>To-dos</h1>
+<h1 class="page-title">To-dos</h1>
+
+<ng-container *ngIf="todos$ | async as todos; else loading">
+  <div *ngFor="let todo of todos" class="todo">
+    <mat-checkbox [checked]="todo.completed">
+      {{ todo.title }}
+    </mat-checkbox>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="(todosError$ | async)">
+  <p>Houve um erro ao carregar os dados</p>
+</ng-container>
+
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

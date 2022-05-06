@@ -40,10 +40,9 @@ $dark-theme: mat.define-dark-theme((
 .dark {
   @include mat.core-color($dark-theme);
   @include mat.button-color($dark-theme);
-  @include mat.input-color($dark-theme);
-  @include mat.form-field-color($dark-theme);
   @include mat.toolbar-color($dark-theme);
   @include mat.progress-bar-color($dark-theme);
+  @include mat.checkbox-color($dark-theme);
   
   background-color: $background-dark;
 
