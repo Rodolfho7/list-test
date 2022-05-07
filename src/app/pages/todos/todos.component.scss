@@ -1,8 +1,12 @@
 .todo {
   padding: 1rem;
-  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #CCC;
+
   &:hover {
     transition: all 250ms ease;
-    box-shadow: var(--shadow-color) 0px 6px 12px -2px, var(--shadow-color) 0px 3px 7px -3px;
+    opacity: 0.6;
   }
 }

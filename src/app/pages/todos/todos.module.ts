@@ -5,6 +5,7 @@ import { TodosRoutingModule } from './todos-routing.module';
 import { LoadingModule } from '@components/loading/loading.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AddButtonModule } from '@components/add-button/add-button.module';
+import { OptionsMenuModule } from '@components/options-menu/options-menu.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AddButtonModule } from '@components/add-button/add-button.module';
     TodosRoutingModule,
     LoadingModule,
     MatCheckboxModule,
-    AddButtonModule
+    AddButtonModule,
+    OptionsMenuModule
   ]
 })
 export class TodosModule { }

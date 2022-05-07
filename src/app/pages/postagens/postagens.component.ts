@@ -31,4 +31,12 @@ export class PostagensComponent implements OnInit {
   addPost(): void {
     console.log('add post clicked');
   }
+
+  onEdit(post: PostModel): void {
+
+  }
+
+  onRemove(post: PostModel): void {
+    
+  }
 }

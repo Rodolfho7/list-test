@@ -31,4 +31,12 @@ export class TodosComponent implements OnInit {
   addTodo(): void {
     console.log('add todo clicked');
   }
+
+  onEdit(post: TodoModel): void {
+
+  }
+
+  onRemove(post: TodoModel): void {
+
+  }
 }

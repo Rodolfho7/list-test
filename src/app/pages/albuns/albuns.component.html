@@ -3,6 +3,10 @@
 <ng-container *ngIf="albums$ | async as albums; else loading">
   <div *ngFor="let album of albums" class="album">
     <h2>{{ album.title }}</h2>
+    <app-options-menu
+      (edit)="onEdit(album)"
+      (remove)="onRemove(album)"
+    ></app-options-menu>
   </div>
 </ng-container>
 
