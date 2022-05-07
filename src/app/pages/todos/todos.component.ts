@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogTodoComponent } from '@components/dialog/dialog-todo/dialog-todo.component';
 import { TodoModel } from '@models/to-do.model';
 import { TodosService } from '@services/api/todo/todos.service';
@@ -18,7 +19,8 @@ export class TodosComponent implements OnInit {
 
   constructor(
     private todosService: TodosService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class TodosComponent implements OnInit {
     }).afterClosed().pipe(
       take(1),
       filter((save) => save),
+      tap(() => this.snackBarMessage('To-do criado/atualizado com sucesso!')),
       tap(() => this.getAllTodos())
     ).subscribe();
   }
@@ -54,6 +57,16 @@ export class TodosComponent implements OnInit {
   }
 
   onRemove(todoId: number): void {
-    this.todosService.removeTodo(todoId);
+    this.todosService.removeTodo(todoId).pipe(
+      take(1),
+      tap(() => this.snackBarMessage('To-do removido')),
+      tap(() => this.getAllTodos())
+    ).subscribe();
+  }
+
+  snackBarMessage(message: string): void {
+    this.snackBar.open(message, '', {
+      duration: 2000
+    });
   }
 }

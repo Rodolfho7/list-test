@@ -6,6 +6,7 @@ import { LoadingModule } from '@components/loading/loading.module';
 import { AddButtonModule } from '@components/add-button/add-button.module';
 import { OptionsMenuModule } from '@components/options-menu/options-menu.module';
 import { DialogAlbumModule } from '@components/dialog/dialog-album/dialog-album.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { DialogAlbumModule } from '@components/dialog/dialog-album/dialog-album.
     LoadingModule,
     AddButtonModule,
     OptionsMenuModule,
-    DialogAlbumModule
+    DialogAlbumModule,
+    MatSnackBarModule
   ]
 })
 export class AlbumsModule { }

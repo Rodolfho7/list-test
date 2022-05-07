@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogPostComponent } from '@components/dialog/dialog-post/dialog-post.component';
 import { PostModel } from '@models/post.model';
 import { PostsService } from '@services/api/posts/posts.service';
@@ -18,7 +19,8 @@ export class PostagensComponent implements OnInit {
 
   constructor(
     private postService: PostsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class PostagensComponent implements OnInit {
     }).afterClosed().pipe(
       take(1),
       filter((save) => save),
+      tap(() => this.snackBarMessage('Postagem criado/atualizado com sucesso!')),
       tap(() => this.getAllPosts())
     ).subscribe();
   }
@@ -54,6 +57,16 @@ export class PostagensComponent implements OnInit {
   }
 
   onRemove(postId: number): void {
-    this.postService.removePost(postId);
+    this.postService.removePost(postId).pipe(
+      take(1),
+      tap(() => this.snackBarMessage('Postagem removida')),
+      tap(() => this.getAllPosts())
+    ).subscribe();
+  }
+
+  snackBarMessage(message: string): void {
+    this.snackBar.open(message, '', {
+      duration: 2000
+    });
   }
 }

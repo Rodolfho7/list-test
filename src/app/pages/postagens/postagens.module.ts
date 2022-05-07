@@ -6,6 +6,7 @@ import { LoadingModule } from '@components/loading/loading.module';
 import { AddButtonModule } from '@components/add-button/add-button.module';
 import { OptionsMenuModule } from '@components/options-menu/options-menu.module';
 import { DialogPostModule } from '@components/dialog/dialog-post/dialog-post.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [ PostagensComponent ],
@@ -15,7 +16,8 @@ import { DialogPostModule } from '@components/dialog/dialog-post/dialog-post.mod
     LoadingModule,
     AddButtonModule,
     OptionsMenuModule,
-    DialogPostModule
+    DialogPostModule,
+    MatSnackBarModule
   ]
 })
 export class PostagensModule { }

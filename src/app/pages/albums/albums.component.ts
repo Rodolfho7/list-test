@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
 import { AlbumModel } from '@models/album.model';
 import { AlbumsService } from '@services/api/albums/albums.service';
@@ -18,7 +19,8 @@ export class AlbumsComponent implements OnInit {
 
   constructor(
     private albumsService: AlbumsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -41,6 +43,7 @@ export class AlbumsComponent implements OnInit {
     }).afterClosed().pipe(
       take(1),
       filter((save) => save),
+      tap(() => this.snackBarMessage('Album criado/atualizado com sucesso!')),
       tap(() => this.getAllAlbums())
     ).subscribe();
   }
@@ -54,6 +57,16 @@ export class AlbumsComponent implements OnInit {
   }
 
   onRemove(albumId: number): void {
-    this.albumsService.removeAlbum(albumId);
+    this.albumsService.removeAlbum(albumId).pipe(
+      take(1),
+      tap(() => this.snackBarMessage('Album removido')),
+      tap(() => this.getAllAlbums())
+    ).subscribe();
+  }
+
+  snackBarMessage(message: string): void {
+    this.snackBar.open(message, '', {
+      duration: 2000
+    });
   }
 }
