@@ -3,6 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'postagens',
+    pathMatch: 'full'
+  },
+  {
     path: 'postagens',
     loadChildren: () => import('./pages/postagens/postagens.module').then((m) => m.PostagensModule)
   },  {
