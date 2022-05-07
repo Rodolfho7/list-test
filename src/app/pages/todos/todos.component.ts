@@ -78,8 +78,7 @@ export class TodosComponent implements OnInit {
   updateChecked(todoId: number, { checked }: MatCheckboxChange): void {
     this.todosService.updateChecked(todoId, checked).pipe(
       take(1),
-      tap(() => this.snackBarMessage('Status atualizado')),
-      tap(() => this.getAllTodos())
+      tap(() => this.snackBarMessage('Status atualizado'))
     ).subscribe();
   }
 }
