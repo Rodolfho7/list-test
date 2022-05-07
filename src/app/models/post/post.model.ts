@@ -4,3 +4,5 @@ export type PostModel = {
   title: string;
   body: string;
 }
+
+export type NewPostModel = Omit<PostModel, 'id'>;
