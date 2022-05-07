@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoModel } from '@models/to-do.model';
 import { TodosService } from '@services/api/todos.service';
-import { Observable, of } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-todos',
@@ -16,7 +16,16 @@ export class TodosComponent implements OnInit {
   constructor(private todosService: TodosService) { }
 
   ngOnInit(): void {
-    this.todos$ = this.todosService.getAll();
+    this.getAllTodos();
+  }
+
+  getAllTodos(): void {
+    this.todos$ = this.todosService.getAll().pipe(
+      catchError(() => {
+        this.todosError$ = of(true);
+        return of([]);
+      })
+    );
   }
 
   addTodo(): void {

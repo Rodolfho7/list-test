@@ -16,6 +16,10 @@ export class PostagensComponent implements OnInit {
   constructor(private postService: PostagensService) { }
 
   ngOnInit(): void {
+    this.getAllPosts();
+  }
+
+  getAllPosts(): void {
     this.posts$ = this.postService.getAll().pipe(
       catchError(() => {
         this.postsError$ = of(true);
