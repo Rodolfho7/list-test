@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content class="mat-typography">
+  <ng-content></ng-content>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Fechar</button>
+  <button mat-flat-button color="primary" (click)="save()">Salvar</button>
+</mat-dialog-actions>
