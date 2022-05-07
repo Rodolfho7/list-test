@@ -43,6 +43,7 @@ $dark-theme: mat.define-dark-theme((
   @include mat.toolbar-color($dark-theme);
   @include mat.progress-bar-color($dark-theme);
   @include mat.checkbox-color($dark-theme);
+  @include mat.dialog-theme($dark-theme);
   
   background-color: $background-dark;
 
