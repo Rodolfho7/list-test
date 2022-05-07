@@ -24,7 +24,7 @@ export class DialogTodoComponent {
   ) {
     this.todo = this.fb.group({
       title: [this.data?.title, Validators.required],
-      completed: [false],
+      completed: [this.data?.completed || false],
     });
   }
 
