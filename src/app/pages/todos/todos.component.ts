@@ -4,6 +4,7 @@ import { DialogTodoComponent } from '@components/dialog/dialog-todo/dialog-todo.
 import { TodoModel } from '@models/to-do.model';
 import { TodosService } from '@services/api/todos.service';
 import { catchError, Observable, of } from 'rxjs';
+import { tap, take, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-todos',
@@ -33,21 +34,26 @@ export class TodosComponent implements OnInit {
     );
   }
 
-  addTodo(): void {
+  openDialog(data: TodoModel | null = null): void {
     this.dialog.open(DialogTodoComponent, {
-      width: '500px'
-    }).afterClosed().subscribe((result) => {
-      if (result) {
-        this.getAllTodos();
-      }
-    });
+      width: '500px',
+      data
+    }).afterClosed().pipe(
+      take(1),
+      filter((save) => save),
+      tap(() => this.getAllTodos())
+    ).subscribe();
   }
 
-  onEdit(post: TodoModel): void {
-
+  addTodo(): void {
+    this.openDialog();
   }
 
-  onRemove(post: TodoModel): void {
+  onEdit(todo: TodoModel): void {
+    this.openDialog(todo);
+  }
 
+  onRemove(todoId: number): void {
+    this.todosService.removeTodo(todoId);
   }
 }
