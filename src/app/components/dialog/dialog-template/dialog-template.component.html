@@ -4,5 +4,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="closeDialog.emit(false)">Fechar</button>
-  <button mat-flat-button color="primary" (click)="closeDialog.emit(true)">Salvar</button>
+  <button mat-flat-button color="primary" [disabled]="!isValid" (click)="closeDialog.emit(true)">Salvar</button>
 </mat-dialog-actions>
