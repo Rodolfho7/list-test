@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class DialogTemplateComponent {
 
   @Input() isValid = false;
+  @Input() loading = false;
   @Input() title: string = '';
   @Output() closeDialog = new EventEmitter<boolean>();
 
