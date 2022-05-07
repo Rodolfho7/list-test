@@ -5,7 +5,7 @@
     <h2>{{ album.title }}</h2>
     <app-options-menu
       (edit)="onEdit(album)"
-      (remove)="onRemove(album)"
+      (remove)="onRemove(album.id)"
     ></app-options-menu>
   </div>
 </ng-container>

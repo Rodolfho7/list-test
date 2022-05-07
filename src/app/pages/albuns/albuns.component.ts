@@ -4,6 +4,7 @@ import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-alb
 import { AlbumModel } from '@models/album.model';
 import { AlbunsService } from '@services/api/albuns.service';
 import { catchError, Observable, of } from 'rxjs';
+import { take, filter, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-albuns',
@@ -33,22 +34,26 @@ export class AlbunsComponent implements OnInit {
     );
   }
 
-  addAlbum(): void {
+  openDialog(data: AlbumModel | null = null): void {
     this.dialog.open(DialogAlbumComponent, {
-      width: '500px'
-    }).afterClosed().subscribe((result) => {
-      if (result) {
-        this.getAllAlbuns();
-      }
-    });
+      width: '500px',
+      data
+    }).afterClosed().pipe(
+      take(1),
+      filter((save) => save),
+      tap(() => this.getAllAlbuns())
+    ).subscribe();
+  }
+
+  addAlbum(): void {
+    this.openDialog();
   }
 
   onEdit(album: AlbumModel): void {
-    console.log(album);
+    this.openDialog(album);
   }
 
-  onRemove(album: AlbumModel): void {
-    console.log(album);
+  onRemove(albumId: number): void {
+    this.albumService.removeAlbum(albumId);
   }
-
 }
