@@ -12,11 +12,4 @@ export class DialogTemplateComponent {
 
   constructor() { }
 
-  cancel(): void {
-    this.closeDialog.emit(false);
-  }
-
-  save(): void {
-    this.closeDialog.emit(true);
-  }
 }
