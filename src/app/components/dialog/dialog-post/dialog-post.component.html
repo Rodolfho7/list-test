@@ -1,6 +1,18 @@
 <app-dialog-template
   title="Dialog Post"
   (closeDialog)="closeDialog($event)"
+  [isValid]="post.valid && !loading"
+  [loading]="loading"
 >
-  estrutura do dialog post
+  <form [formGroup]="post">
+    <mat-form-field appearance="fill" class="field">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="field">
+      <mat-label>Texto</mat-label>
+      <textarea matInput formControlName="body"></textarea>
+    </mat-form-field>
+  </form>
 </app-dialog-template>
