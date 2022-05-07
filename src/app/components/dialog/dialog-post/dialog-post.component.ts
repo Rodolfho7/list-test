@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PostsService } from '@services/api/posts.service';
+import { PostsService } from '@services/api/posts/posts.service';
 import { Observable, catchError, of } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
 

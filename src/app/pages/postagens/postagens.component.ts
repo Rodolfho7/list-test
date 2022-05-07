@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogPostComponent } from '@components/dialog/dialog-post/dialog-post.component';
 import { PostModel } from '@models/post.model';
-import { PostsService } from '@services/api/posts.service';
+import { PostsService } from '@services/api/posts/posts.service';
 import { catchError, Observable, of } from 'rxjs';
 import { take, filter, tap } from 'rxjs/operators';
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogTodoComponent } from '@components/dialog/dialog-todo/dialog-todo.component';
 import { TodoModel } from '@models/to-do.model';
-import { TodosService } from '@services/api/todos.service';
+import { TodosService } from '@services/api/todo/todos.service';
 import { catchError, Observable, of } from 'rxjs';
 import { tap, take, filter } from 'rxjs/operators';
 

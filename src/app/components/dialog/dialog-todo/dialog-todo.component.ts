@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { TodosService } from '@services/api/todos.service';
+import { TodosService } from '@services/api/todo/todos.service';
 import { Observable, of } from 'rxjs';
 import { take, tap, catchError } from 'rxjs/operators';
 
