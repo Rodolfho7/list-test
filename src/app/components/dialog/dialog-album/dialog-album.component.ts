@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AlbunsService } from '@services/api/albuns.service';
+import { AlbumsService } from '@services/api/albums/albums.service';
 import { Observable, catchError, of } from 'rxjs';
 import { tap, take } from 'rxjs/operators';
 
@@ -20,7 +20,7 @@ export class DialogAlbumComponent {
     public dialogRef: MatDialogRef<DialogAlbumComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
-    private albunsService: AlbunsService
+    private albumsService: AlbumsService
   ) {
     this.album = this.fb.group({
       title: [this.data?.title, Validators.required]
@@ -42,9 +42,9 @@ export class DialogAlbumComponent {
 
     if (!this.data?.id) {
       albumData = { ...albumData, userId: 1 };
-      this.albumObservable = this.albunsService.createAlbum(albumData);
+      this.albumObservable = this.albumsService.createAlbum(albumData);
     } else {
-      this.albumObservable = this.albunsService.updateAlbum(albumData);
+      this.albumObservable = this.albumsService.updateAlbum(albumData);
     }
 
     this.albumObservable.pipe(

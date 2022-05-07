@@ -2,31 +2,31 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
 import { AlbumModel } from '@models/album.model';
-import { AlbunsService } from '@services/api/albuns.service';
+import { AlbumsService } from '@services/api/albums/albums.service';
 import { catchError, Observable, of } from 'rxjs';
 import { take, filter, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-albuns',
-  templateUrl: './albuns.component.html',
-  styleUrls: ['./albuns.component.scss']
+  selector: 'app-albums',
+  templateUrl: './albums.component.html',
+  styleUrls: ['./albums.component.scss']
 })
-export class AlbunsComponent implements OnInit {
+export class AlbumsComponent implements OnInit {
 
   albums$: Observable<AlbumModel[]> = of([]);
   albumError$: Observable<boolean> = of(false);
 
   constructor(
-    private albumService: AlbunsService,
+    private albumsService: AlbumsService,
     private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.getAllAlbuns();
+    this.getAllAlbums();
   }
 
-  getAllAlbuns(): void {
-    this.albums$ = this.albumService.getAll().pipe(
+  getAllAlbums(): void {
+    this.albums$ = this.albumsService.getAll().pipe(
       catchError(() => {
         this.albumError$ = of(true);
         return of([]);
@@ -41,7 +41,7 @@ export class AlbunsComponent implements OnInit {
     }).afterClosed().pipe(
       take(1),
       filter((save) => save),
-      tap(() => this.getAllAlbuns())
+      tap(() => this.getAllAlbums())
     ).subscribe();
   }
 
@@ -54,6 +54,6 @@ export class AlbunsComponent implements OnInit {
   }
 
   onRemove(albumId: number): void {
-    this.albumService.removeAlbum(albumId);
+    this.albumsService.removeAlbum(albumId);
   }
 }

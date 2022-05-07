@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AlbunsComponent } from './albuns.component';
-import { AlbunsRoutingModule } from './albuns-routing.module';
+import { AlbumsComponent } from './albums.component';
+import { AlbumsRoutingModule } from './albums-routing.module';
 import { LoadingModule } from '@components/loading/loading.module';
 import { AddButtonModule } from '@components/add-button/add-button.module';
 import { OptionsMenuModule } from '@components/options-menu/options-menu.module';
@@ -9,15 +9,15 @@ import { DialogAlbumModule } from '@components/dialog/dialog-album/dialog-album.
 
 @NgModule({
   declarations: [
-    AlbunsComponent
+    AlbumsComponent
   ],
   imports: [
     CommonModule,
-    AlbunsRoutingModule,
+    AlbumsRoutingModule,
     LoadingModule,
     AddButtonModule,
     OptionsMenuModule,
     DialogAlbumModule
   ]
 })
-export class AlbunsModule { }
+export class AlbumsModule { }

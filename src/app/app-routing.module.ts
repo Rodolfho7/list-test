@@ -12,7 +12,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/postagens/postagens.module').then((m) => m.PostagensModule)
   },  {
     path: 'albuns',
-    loadChildren: () => import('./pages/albuns/albuns.module').then((m) => m.AlbunsModule)
+    loadChildren: () => import('./pages/albums/albums.module').then((m) => m.AlbumsModule)
   },  {
     path: 'to-dos',
     loadChildren: () => import('./pages/todos/todos.module').then((m) => m.TodosModule)
