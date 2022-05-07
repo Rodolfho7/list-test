@@ -20,7 +20,7 @@ export class DialogPostComponent {
     public dialogRef: MatDialogRef<DialogPostComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private fb: FormBuilder,
-    private postService: PostsService
+    private postsService: PostsService
   ) {
     this.post = this.fb.group({
       title: [this.data?.title, Validators.required],
@@ -43,9 +43,9 @@ export class DialogPostComponent {
 
     if (!this.data?.id) {
       postData = { ...postData, userId: 1 };
-      this.postObservable = this.postService.createPost(postData);
+      this.postObservable = this.postsService.createPost(postData);
     } else {
-      this.postObservable = this.postService.updatePost(postData);
+      this.postObservable = this.postsService.updatePost(postData);
     }
 
     this.postObservable.pipe(
