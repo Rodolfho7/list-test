@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogPostComponent } from '@components/dialog/dialog-post/dialog-post.component';
 import { PostModel } from '@models/post.model';
-import { PostagensService } from '@services/api/postagens.service';
+import { PostsService } from '@services/api/posts.service';
 import { catchError, Observable, of } from 'rxjs';
+import { take, filter, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-postagens',
@@ -16,7 +17,7 @@ export class PostagensComponent implements OnInit {
   postsError$: Observable<boolean> = of(false);
 
   constructor(
-    private postService: PostagensService,
+    private postService: PostsService,
     private dialog: MatDialog
     ) { }
 
@@ -33,21 +34,26 @@ export class PostagensComponent implements OnInit {
     );
   }
 
-  addPost(): void {
+  openDialog(data: PostModel | null = null): void {
     this.dialog.open(DialogPostComponent, {
-      width: '500px'
-    }).afterClosed().subscribe((result) => {
-      if (result) {
-        this.getAllPosts();
-      }
-    });
+      width: '500px',
+      data
+    }).afterClosed().pipe(
+      take(1),
+      filter((save) => save),
+      tap(() => this.getAllPosts())
+    ).subscribe();
+  }
+
+  addPost(): void {
+    this.openDialog();
   }
 
   onEdit(post: PostModel): void {
-
+    this.openDialog(post);
   }
 
-  onRemove(post: PostModel): void {
-    
+  onRemove(postId: number): void {
+    this.postService.removePost(postId);
   }
 }
