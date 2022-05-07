@@ -5,6 +5,7 @@ import { PostagensRoutingModule } from './postagens-routing.module';
 import { LoadingModule } from '@components/loading/loading.module';
 import { AddButtonModule } from '@components/add-button/add-button.module';
 import { OptionsMenuModule } from '@components/options-menu/options-menu.module';
+import { DialogPostModule } from '@components/dialog/dialog-post/dialog-post.module';
 
 @NgModule({
   declarations: [ PostagensComponent ],
@@ -13,7 +14,8 @@ import { OptionsMenuModule } from '@components/options-menu/options-menu.module'
     PostagensRoutingModule,
     LoadingModule,
     AddButtonModule,
-    OptionsMenuModule
+    OptionsMenuModule,
+    DialogPostModule
   ]
 })
 export class PostagensModule { }

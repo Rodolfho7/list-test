@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogComponent } from '@components/dialog/dialog.component';
+import { DialogAlbumComponent } from '@components/dialog/dialog-album/dialog-album.component';
 import { AlbumModel } from '@models/album.model';
 import { AlbunsService } from '@services/api/albuns.service';
 import { catchError, Observable, of } from 'rxjs';
@@ -34,10 +34,12 @@ export class AlbunsComponent implements OnInit {
   }
 
   addAlbum(): void {
-    this.dialog.open(DialogComponent, {
+    this.dialog.open(DialogAlbumComponent, {
       width: '500px'
     }).afterClosed().subscribe((result) => {
-      //
+      if (result) {
+        this.getAllAlbuns();
+      }
     });
   }
 

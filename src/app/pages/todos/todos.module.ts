@@ -6,6 +6,7 @@ import { LoadingModule } from '@components/loading/loading.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AddButtonModule } from '@components/add-button/add-button.module';
 import { OptionsMenuModule } from '@components/options-menu/options-menu.module';
+import { DialogTodoModule } from '@components/dialog/dialog-todo/dialog-todo.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { OptionsMenuModule } from '@components/options-menu/options-menu.module'
     LoadingModule,
     MatCheckboxModule,
     AddButtonModule,
-    OptionsMenuModule
+    OptionsMenuModule,
+    DialogTodoModule
   ]
 })
 export class TodosModule { }

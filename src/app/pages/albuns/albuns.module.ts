@@ -4,8 +4,8 @@ import { AlbunsComponent } from './albuns.component';
 import { AlbunsRoutingModule } from './albuns-routing.module';
 import { LoadingModule } from '@components/loading/loading.module';
 import { AddButtonModule } from '@components/add-button/add-button.module';
-import { DialogModule } from '@components/dialog/dialog.module';
 import { OptionsMenuModule } from '@components/options-menu/options-menu.module';
+import { DialogAlbumModule } from '@components/dialog/dialog-album/dialog-album.module';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,8 @@ import { OptionsMenuModule } from '@components/options-menu/options-menu.module'
     AlbunsRoutingModule,
     LoadingModule,
     AddButtonModule,
-    DialogModule,
-    OptionsMenuModule
+    OptionsMenuModule,
+    DialogAlbumModule
   ]
 })
 export class AlbunsModule { }

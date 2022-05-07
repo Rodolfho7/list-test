@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogPostComponent } from '@components/dialog/dialog-post/dialog-post.component';
 import { PostModel } from '@models/post.model';
 import { PostagensService } from '@services/api/postagens.service';
 import { catchError, Observable, of } from 'rxjs';
@@ -13,7 +15,10 @@ export class PostagensComponent implements OnInit {
   posts$: Observable<PostModel[]> = of([]);
   postsError$: Observable<boolean> = of(false);
 
-  constructor(private postService: PostagensService) { }
+  constructor(
+    private postService: PostagensService,
+    private dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
     this.getAllPosts();
@@ -29,7 +34,13 @@ export class PostagensComponent implements OnInit {
   }
 
   addPost(): void {
-    console.log('add post clicked');
+    this.dialog.open(DialogPostComponent, {
+      width: '500px'
+    }).afterClosed().subscribe((result) => {
+      if (result) {
+        this.getAllPosts();
+      }
+    });
   }
 
   onEdit(post: PostModel): void {
