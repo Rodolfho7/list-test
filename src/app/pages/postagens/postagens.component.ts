@@ -27,6 +27,10 @@ export class PostagensComponent implements OnInit {
     this.getAllPosts();
   }
 
+  itemTracked(index: number, post: PostModel) {
+    return post.id;
+  }
+
   getAllPosts(): void {
     this.posts$ = this.postService.getAll().pipe(
       catchError(() => {

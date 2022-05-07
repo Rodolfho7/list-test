@@ -1,7 +1,7 @@
 <h1 class="page-title">Postagens</h1>
 
 <ng-container *ngIf="posts$ | async as posts; else loading">
-  <div *ngFor="let post of posts" class="post">
+  <div *ngFor="let post of posts; trackBy: itemTracked" class="post">
     <div>
       <h2>{{ post.title }}</h2>
       <p class="post-body">{{ post.body }}</p>

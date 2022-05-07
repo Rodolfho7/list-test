@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogTodoComponent } from '@components/dialog/dialog-todo/dialog-todo.component';
@@ -25,6 +26,10 @@ export class TodosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllTodos();
+  }
+
+  itemTracked(index: number, todo: TodoModel) {
+    return todo.id;
   }
 
   getAllTodos(): void {
@@ -68,5 +73,13 @@ export class TodosComponent implements OnInit {
     this.snackBar.open(message, '', {
       duration: 2000
     });
+  }
+
+  updateChecked(todoId: number, { checked }: MatCheckboxChange): void {
+    this.todosService.updateChecked(todoId, checked).pipe(
+      take(1),
+      tap(() => this.snackBarMessage('Status atualizado')),
+      tap(() => this.getAllTodos())
+    ).subscribe();
   }
 }

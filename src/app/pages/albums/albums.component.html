@@ -1,7 +1,7 @@
 <h1 class="page-title">Albuns</h1>
 
 <ng-container *ngIf="albums$ | async as albums; else loading">
-  <div *ngFor="let album of albums" class="album">
+  <div *ngFor="let album of albums; trackBy: itemTracked" class="album">
     <h2>{{ album.title }}</h2>
     <app-options-menu
       (edit)="onEdit(album)"

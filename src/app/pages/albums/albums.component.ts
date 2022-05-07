@@ -27,6 +27,10 @@ export class AlbumsComponent implements OnInit {
     this.getAllAlbums();
   }
 
+  itemTracked(index: number, album: AlbumModel) {
+    return album.id;
+  }
+
   getAllAlbums(): void {
     this.albums$ = this.albumsService.getAll().pipe(
       catchError(() => {
