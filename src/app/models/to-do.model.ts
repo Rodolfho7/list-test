@@ -4,3 +4,5 @@ export type TodoModel = {
   title: string;
   completed: boolean;
 }
+
+export type NewTodoModel = Omit<TodoModel, 'id'>;
