@@ -1,6 +1,13 @@
 <app-dialog-template
   title="Dialog Album"
   (closeDialog)="closeDialog($event)"
+  [isValid]="album.valid && !loading"
+  [loading]="loading"
 >
-  estrutura do dialog album
+<form [formGroup]="album">
+  <mat-form-field appearance="fill" class="field">
+    <mat-label>Título</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+</form>
 </app-dialog-template>
