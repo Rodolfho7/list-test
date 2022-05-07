@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TodoModel } from '@models/to-do.model';
+import { NewTodoModel, TodoModel } from '@models/to-do.model';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -17,4 +17,15 @@ export class TodosService {
     return this.httpClient.get<TodoModel[]>(`${this.url}/todos`);
   }
 
+  createTodo(newPost: NewTodoModel): Observable<any> {
+    return this.httpClient.post<TodoModel>(`${this.url}/todos`, { newPost });
+  }
+
+  updateTodo(post: TodoModel): Observable<any> {
+    return this.httpClient.put<TodoModel>(`${this.url}/todos/${post.id}`, { post });
+  }
+
+  removeTodo(postId: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.url}/todos/${postId}`);
+  }
 }
