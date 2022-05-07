@@ -4,5 +4,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button (click)="closeDialog.emit(false)">Fechar</button>
-  <button mat-flat-button color="primary" [disabled]="!isValid" (click)="closeDialog.emit(true)">Salvar</button>
+  <button mat-flat-button color="primary" [class.spinner]="loading" [disabled]="!isValid" (click)="closeDialog.emit(true)">
+    <span *ngIf="!loading">Salvar</span>
+  </button>
 </mat-dialog-actions>
